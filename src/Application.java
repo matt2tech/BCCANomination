@@ -1,4 +1,4 @@
-public class Student {
+public class Application {
     String name;
     String email;
     String school;
