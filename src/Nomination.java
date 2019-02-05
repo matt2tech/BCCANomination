@@ -12,16 +12,16 @@ public class Nomination {
     String dedication;
     String workEthic;
     String notes;
-    Scanner user = new Scanner(System.in);
+    final Scanner user = new Scanner(System.in);
 
     public void go() {
         boolean eligible = eligibility();
-        if (eligible == true) {
+        if (eligible) {
             nominatorForm();
             nomineeInfo();
             qualityInfo();
             submission();
-        } else if (eligible == false) {
+        } else if (!eligible) {
             System.out.println("Apologies. This nominee is not eligible");
         } else {
             System.out.println("System Error!");
@@ -61,10 +61,10 @@ public class Nomination {
     }
 
     private void nominatorForm() {
-        System.out.println("Email Address: ");
-        nominatorEmail = user.nextLine();
         System.out.println("Your Name: ");
         nominator = user.nextLine();
+        System.out.println("Email Address: ");
+        nominatorEmail = user.nextLine();
         System.out.println("School District: ");
         schoolDistrict = user.nextLine();
         System.out.println("Position: ");
@@ -74,25 +74,26 @@ public class Nomination {
     }
 
     private void nomineeInfo(){
+        System.out.println("We will now ask you some question about the student you are nominating.");
         System.out.println("Name:");
         String name = user.nextLine();
         System.out.println("Age:");
         String age = user.nextLine();
         System.out.println("Graduation Date [mm/dd]:");
         String date = user.nextLine() + "/19";
-        student = new Student(name, age, date);
+        student = new Student(name, age, schoolDistrict, date);
     }
 
     private void qualityInfo() {
-        System.out.println("Aptitude: ");
+        System.out.println("Aptitude: Do you have any experiences when this student has demonstrated a strong ability to think logically and/or strategically?");
         aptitude = user.nextLine();
-        System.out.println("Perseverance: ");
+        System.out.println("Perseverance: Is there any evidence of the applicant being engaged in something they are passionate about?");
         perseverance = user.nextLine();
-        System.out.println("Dedication: ");
+        System.out.println("Dedication: Do you think the applicant would be able to reliably attend the program five days a week in Water Valley?");
         dedication = user.nextLine();
-        System.out.println("Work Ethic/Heart: ");
+        System.out.println("Work Ethic/Heart: Why does this student deserve a position at Base Camp?");
         workEthic = user.nextLine();
-        System.out.println("Notes: ");
+        System.out.println("Anything else you'd like to share about this nominee?");
         notes = user.nextLine();
     }
 
@@ -102,10 +103,11 @@ public class Nomination {
             String bool = user.nextLine();
             if (bool.equalsIgnoreCase("y")) {
                 student.setNomination(this);
-                System.out.println(student);
                 System.out.println("Submitted");
+                break;
             } else if (bool.equalsIgnoreCase("n")) {
-                System.out.println("Thanks anyway bud.");
+                System.out.println("Well thank you anyway for your time.");
+                break;
             } else {
                 System.out.println("Invalid Input!");
             }
