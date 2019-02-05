@@ -20,11 +20,16 @@ public class Nomination {
             nominatorForm();
             nomineeInfo();
             qualityInfo();
+            submission();
         } else if (eligible == false) {
             System.out.println("Apologies. This nominee is not eligible");
         } else {
             System.out.println("System Error!");
         }
+    }
+
+    public String toString() {
+        return ("Nominator: " + nominator + " Email: " +nominatorEmail+ " School: " +schoolDistrict+ " Position: " +position+ " Relationship: " +relationship+ "\nAptitude: " +aptitude + "\nPerseverance: "+perseverance + "\nDedication: " + dedication + "\nWork Ethic: " + workEthic + "\nNotes: " + notes);
     }
 
     public void getNominatorInfo() {
@@ -50,7 +55,7 @@ public class Nomination {
             } else if (bool.equalsIgnoreCase("n")) {
                 return false;
             } else {
-                System.out.println("Please input correct answer");
+                System.out.println("Invalid Input!");
             }
         }
     }
@@ -96,11 +101,13 @@ public class Nomination {
             System.out.println("Do you want to submit? [y/n]");
             String bool = user.nextLine();
             if (bool.equalsIgnoreCase("y")) {
+                student.setNomination(this);
+                System.out.println(student);
                 System.out.println("Submitted");
             } else if (bool.equalsIgnoreCase("n")) {
                 System.out.println("Thanks anyway bud.");
             } else {
-                System.out.println("System Error!");
+                System.out.println("Invalid Input!");
             }
         }
     }
