@@ -90,4 +90,18 @@ public class Nomination {
         System.out.println("Notes: ");
         relationship = user.nextLine();
     }
+
+    private void submission() {
+        while(true) {
+            System.out.println("Do you want to submit? [y/n]");
+            String bool = user.nextLine();
+            if (bool.equalsIgnoreCase("y")) {
+                System.out.println("Submitted");
+            } else if (bool.equalsIgnoreCase('n')) {
+                System.out.println("Thanks anyway bud.");
+            } else {
+                System.out.println("System Error!");
+            }
+        }
+    }
 }
