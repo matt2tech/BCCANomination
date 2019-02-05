@@ -16,7 +16,7 @@ public class Program {
             Application app = new Application();
 //            app.go();
         } else {
-            System.out.println("System Error!");
+            System.out.println("Invalid Input!");
         }
     }
 
