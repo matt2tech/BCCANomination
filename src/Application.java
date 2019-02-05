@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Application {
-    final Scanner user = new Scanner(System.in);
+public class Application implements Serializable {
+    static Scanner user = new Scanner(System.in);
     Student student;
     String name;
     String email;

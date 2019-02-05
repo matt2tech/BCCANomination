@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Nomination {
+public class Nomination implements Serializable {
     Student student;
     String nominator;
     String nominatorEmail;
@@ -12,7 +13,7 @@ public class Nomination {
     String dedication;
     String workEthic;
     String notes;
-    final Scanner user = new Scanner(System.in);
+    static Scanner user = new Scanner(System.in);
 
     public void go() {
         boolean eligible = eligibility();
@@ -103,6 +104,7 @@ public class Nomination {
             String bool = user.nextLine();
             if (bool.equalsIgnoreCase("y")) {
                 student.setNomination(this);
+                DataBaseHelper.writeStudentToFile(student);
                 System.out.println("Submitted");
                 break;
             } else if (bool.equalsIgnoreCase("n")) {

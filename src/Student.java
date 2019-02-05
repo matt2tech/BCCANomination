@@ -1,4 +1,6 @@
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     String name;
 //    Change to Integer in later development
     String age;
