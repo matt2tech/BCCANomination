@@ -1,14 +1,12 @@
 import java.util.Scanner;
 
 public class Nomination {
-    String student;
+    Student student;
     String nominator;
     String nominatorEmail;
     String schoolDistrict;
     String position;
     String relationship;
-    Integer studentAge;
-    String studentGraduation;
     String aptitude;
     String perseverance;
     String dedication;
@@ -20,6 +18,7 @@ public class Nomination {
         boolean eligible = eligibility();
         if (eligible == true) {
             nominatorForm();
+            nomineeInfo();
         } else if (eligible == false) {
             System.out.println("Apologies. This nominee is not eligible");
         } else {
@@ -33,8 +32,7 @@ public class Nomination {
     }
 
     public void getNomineeInfo() {
-        System.out.printf("Name: %s\nAge: %s\nExpected Graduation Date: %s\n"
-                , student, studentAge, studentGraduation);
+        System.out.println(student);
     }
 
     public void getNomineeQuality() {
@@ -59,5 +57,26 @@ public class Nomination {
     private void nominatorForm() {
         System.out.println("Email Address: ");
         nominatorEmail = user.nextLine();
+        System.out.println("Your Name: ");
+        nominator = user.nextLine();
+        System.out.println("School District: ");
+        schoolDistrict = user.nextLine();
+        System.out.println("Position: ");
+        position = user.nextLine();
+        System.out.println("Relationship to Nominee: ");
+        relationship = user.nextLine();
     }
+
+    private void nomineeInfo(){
+        System.out.println("Name:");
+        String name = user.nextLine();
+        System.out.println("Age:");
+        String age = user.nextLine();
+        System.out.println("Graduation Date [mm/dd]:");
+        String date = user.nextLine() + "/19";
+        student = new Student(name, age, date);
+
+    }
+
+
 }
