@@ -1,9 +1,12 @@
+import java.util.Scanner;
+
 public class Application {
+    Scanner user = new Scanner(System.in);
     String name;
     String email;
     String school;
     String eligible;
-    Integer age;
+    String age;
     String phoneNumber;
     String graduationDate;
     String plan;
@@ -11,47 +14,43 @@ public class Application {
     String dedicationWorkEthic;
     String passion;
 
-    public String getName() {
-        return name;
+    public void go(){
+        boolean bool = eligibility();
+        if (bool){
+            applicantInformation();
+        }else if(!bool){
+            System.out.println("Sorry, you can not apply. You don not meet our criteria.");
+        }else{
+            System.out.println("System Error");
+        }
     }
 
-    public String getEmail() {
-        return email;
+    public Boolean eligibility(){
+        while (true){
+            System.out.println("Do you meet the following requirements:[Y/N]\n-Graduating high school in 2019 \n-In driving distance of Water Valley");
+            String input = user.nextLine();
+            if (input.equalsIgnoreCase("y")){
+                return true;
+            }else if(input.equalsIgnoreCase("n")){
+                return false;
+            }else{System.out.println("Please enter a valid input.");}
+        }
     }
 
-    public String getSchool() {
-        return school;
-    }
-
-    public String getEligible() {
-        return eligible;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getGraduationDate() {
-        return graduationDate;
-    }
-
-    public String getPlan() {
-        return plan;
-    }
-
-    public String getAptitude() {
-        return aptitude;
-    }
-
-    public String getDedicationWorkEthic() {
-        return dedicationWorkEthic;
-    }
-
-    public String getPassion() {
-        return passion;
+    public void applicantInformation(){
+        System.out.println("Your Name: ");
+        name = user.nextLine();
+        System.out.println("Email Address: ");
+        email = user.nextLine();
+        System.out.println("School District: ");
+        school = user.nextLine();
+        System.out.println("Age: ");
+        age = user.nextLine();
+        System.out.println("Phone Number: ");
+        phoneNumber = user.nextLine();
+        System.out.println("Expected Graduation Date: ");
+        graduationDate = user.nextLine();
+        System.out.println("What is your plans for next year? (If you didn't get accepted into Base Camp)");
+        plan = user.nextLine();
     }
 }

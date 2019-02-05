@@ -14,7 +14,7 @@ public class Program {
             nom.go();
         } else if (user.equals("2")) {
             Application app = new Application();
-//            app.go();
+            app.go();
         } else {
             System.out.println("Invalid Input!");
         }
