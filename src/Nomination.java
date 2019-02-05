@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Nomination {
     String student;
     String nominator;
@@ -12,9 +14,17 @@ public class Nomination {
     String dedication;
     String workEthic;
     String notes;
+    Scanner user = new Scanner(System.in);
 
     public void go() {
-
+        boolean eligible = eligibility();
+        if (eligible == true) {
+            nominatorForm();
+        } else if (eligible == false) {
+            System.out.println("Apologies. This nominee is not eligible");
+        } else {
+            System.out.println("System Error!");
+        }
     }
 
     public void getNominatorInfo() {
@@ -30,5 +40,24 @@ public class Nomination {
     public void getNomineeQuality() {
         System.out.printf("Aptitude: %s\nPerseverance: %s\nDedication: %s\nWork Ethic/Heart: %s\nNotes: %s\n"
                 , aptitude, perseverance, dedication, workEthic, notes);
+    }
+
+    private boolean eligibility() {
+        while (true) {
+            System.out.println("For a nominee to be eligible, nominee has to be\n*Within driving distance of Water Valley\n*Graduating high school in 2019\n[Y/N]");
+            String bool = user.nextLine();
+            if (bool.equalsIgnoreCase("y")) {
+                return true;
+            } else if (bool.equalsIgnoreCase("n")) {
+                return false;
+            } else {
+                System.out.println("Please input correct answer");
+            }
+        }
+    }
+
+    private void nominatorForm() {
+        System.out.println("Email Address: ");
+        nominatorEmail = user.nextLine();
     }
 }
