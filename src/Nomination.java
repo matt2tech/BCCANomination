@@ -85,15 +85,15 @@ public class Nomination {
 
     private void qualityInfo() {
         System.out.println("Aptitude: ");
-        nominatorEmail = user.nextLine();
+        aptitude = user.nextLine();
         System.out.println("Perseverance: ");
-        nominator = user.nextLine();
+        perseverance = user.nextLine();
         System.out.println("Dedication: ");
-        schoolDistrict = user.nextLine();
+        dedication = user.nextLine();
         System.out.println("Work Ethic/Heart: ");
-        position = user.nextLine();
+        workEthic = user.nextLine();
         System.out.println("Notes: ");
-        relationship = user.nextLine();
+        notes = user.nextLine();
     }
 
     private void submission() {
