@@ -13,8 +13,8 @@ public class Program {
             Nomination nom = new Nomination();
             nom.go();
         } else if (user.equals("2")) {
-            Student stu = new Student();
-            stu.go();
+            Application app = new Application();
+//            app.go();
         } else {
             System.out.println("System Error!");
         }

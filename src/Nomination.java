@@ -19,6 +19,7 @@ public class Nomination {
         if (eligible == true) {
             nominatorForm();
             nomineeInfo();
+            qualityInfo();
         } else if (eligible == false) {
             System.out.println("Apologies. This nominee is not eligible");
         } else {
@@ -75,8 +76,18 @@ public class Nomination {
         System.out.println("Graduation Date [mm/dd]:");
         String date = user.nextLine() + "/19";
         student = new Student(name, age, date);
-
     }
 
-
+    private void qualityInfo() {
+        System.out.println("Aptitude: ");
+        nominatorEmail = user.nextLine();
+        System.out.println("Perseverance: ");
+        nominator = user.nextLine();
+        System.out.println("Dedication: ");
+        schoolDistrict = user.nextLine();
+        System.out.println("Work Ethic/Heart: ");
+        position = user.nextLine();
+        System.out.println("Notes: ");
+        relationship = user.nextLine();
+    }
 }
