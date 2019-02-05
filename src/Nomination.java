@@ -97,7 +97,7 @@ public class Nomination {
             String bool = user.nextLine();
             if (bool.equalsIgnoreCase("y")) {
                 System.out.println("Submitted");
-            } else if (bool.equalsIgnoreCase('n')) {
+            } else if (bool.equalsIgnoreCase("n")) {
                 System.out.println("Thanks anyway bud.");
             } else {
                 System.out.println("System Error!");
