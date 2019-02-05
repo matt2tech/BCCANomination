@@ -5,7 +5,6 @@ public class Application {
     String name;
     String email;
     String school;
-    String eligible;
     String age;
     String phoneNumber;
     String graduationDate;
@@ -25,7 +24,7 @@ public class Application {
         }
     }
 
-    public Boolean eligibility(){
+    private Boolean eligibility(){
         while (true){
             System.out.println("Do you meet the following requirements:[Y/N]\n-Graduating high school in 2019 \n-In driving distance of Water Valley");
             String input = user.nextLine();
@@ -37,7 +36,7 @@ public class Application {
         }
     }
 
-    public void applicantInformation(){
+    private void applicantInformation(){
         System.out.println("Your Name: ");
         name = user.nextLine();
         System.out.println("Email Address: ");
@@ -52,5 +51,14 @@ public class Application {
         graduationDate = user.nextLine();
         System.out.println("What is your plans for next year? (If you didn't get accepted into Base Camp)");
         plan = user.nextLine();
+    }
+
+    private void qualityInfo() {
+        System.out.println("Aptitude: ");
+        aptitude = user.nextLine();
+        System.out.println("Dedication/Work Ethic/Heart: ");
+        dedicationWorkEthic = user.nextLine();
+        System.out.println("Passion/Persistence: ");
+        passion = user.nextLine();
     }
 }
