@@ -60,14 +60,18 @@ public class Admin {
     public void askForSelection(){
         while (true){
             System.out.println("\nPlease select a number that corresponds to a student(or enter 0 to go back to the main menu):");
-            Integer selection = Integer.parseInt(user.nextLine());
+            Scanner scan = new Scanner(System.in);
+            while(!scan.hasNextInt()) {
+                scan.next();
+            }
+            Integer selection = scan.nextInt();
             if (selection - 1 >= 0 && selection <= students.size()){
                 showStudentDetails(students.get(selection - 1));
                 break;
             }else if(selection == 0){
                 chooseFilter();
             }
-            else{
+            else {
                 System.out.println("Please enter a valid input");
             }
         }
