@@ -29,7 +29,7 @@ public class Application implements Serializable {
     }
 
     public String toString() {
-        return (" Email: " +email+ " School: " +school+ "Phone Number: " +phoneNumber+  "Plan: " +plan+ "\nAptitude: " +aptitude + "\nDedication / Work Ethic: " + dedicationWorkEthic + "\nPassion: " + passion);
+        return ("Email: " +email+ " School: " +school+ "Phone Number: " +phoneNumber+  "Plan: " +plan+ "\nAptitude: " +aptitude + "\nDedication / Work Ethic: " + dedicationWorkEthic + "\nPassion: " + passion);
     }
 
     private Boolean eligibility(){
@@ -76,7 +76,7 @@ public class Application implements Serializable {
             String bool = user.nextLine();
             if (bool.equalsIgnoreCase("y")) {
                 student = new Student(name, age, school, graduationDate);
-                student.setApplication(this);
+                DataBaseHelper.checkForStudentApplicant(student, this);
                 System.out.println("Submitted");
                 break;
             } else if (bool.equalsIgnoreCase("n")) {
