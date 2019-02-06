@@ -81,7 +81,7 @@ public class Nomination implements Serializable {
         System.out.println("Age:");
         String age = user.nextLine();
         System.out.println("Graduation Date [mm/dd]:");
-        String date = user.nextLine() + "/19";
+        String date = user.nextLine();
         student = new Student(name, age, schoolDistrict, date);
     }
 
@@ -103,8 +103,7 @@ public class Nomination implements Serializable {
             System.out.println("Do you want to submit? [y/n]");
             String bool = user.nextLine();
             if (bool.equalsIgnoreCase("y")) {
-                student.setNomination(this);
-                DataBaseHelper.writeStudentToFile(student);
+                DataBaseHelper.checkForStudentNominee(student, this);
                 System.out.println("Submitted");
                 break;
             } else if (bool.equalsIgnoreCase("n")) {
