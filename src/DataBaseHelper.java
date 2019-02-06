@@ -43,40 +43,46 @@ public class DataBaseHelper {
 
     public static void checkForStudentNominee(Student student, Nomination nomination){
         ArrayList<Student> students = DataBaseHelper.readFromFile();
-        Student matchingStudent =  new Student("Fake","Fake","Fake","Fake");
+        Student matchingStudent =  student;
         for (Student s: DataBaseHelper.readFromFile()) {
             System.out.println(s.name);
             if (s.name.equalsIgnoreCase(student.name) && s.age.equalsIgnoreCase(student.age) && s.school.equalsIgnoreCase(student.school)) {
                 System.out.println("Found Match");
                 matchingStudent = s;
-                matchingStudent.setNomination(nomination);
                 students.remove(s);
-//                database method here
+                DataBaseHelper.rewriteFile(students);
             }
         }
-//        if (matchingStudent.isNominationAvailable().equals("Unavailable")){
-//            matchingStudent = student;
-//            matchingStudent.setNomination(nomination);
-//            DataBaseHelper.writeStudentToFile(matchingStudent);
-//        }
+            matchingStudent.setNomination(nomination);
+            DataBaseHelper.writeStudentToFile(matchingStudent);
     }
 
     public static void checkForStudentApplicant(Student student, Application application){
         ArrayList<Student> students = DataBaseHelper.readFromFile();
-        Student matchingStudent = new Student("Fake","Fake","Fake","Fake");
+        Student matchingStudent = student;
         for (Student s: students) {
             if (s.name.equalsIgnoreCase(student.name) && s.age.equalsIgnoreCase(student.age) && s.school.equalsIgnoreCase(student.school)) {
                 System.out.println("Found Match");
                 matchingStudent = s;
-                matchingStudent.setApplication(application);
                 students.remove(s);
-//                database method here
+                DataBaseHelper.rewriteFile(students);
             }
         }
-//        if (matchingStudent.isApplicationAvailable().equals("Unavailable")) {
-//            matchingStudent = student;
-//            matchingStudent.setApplication(application);
-//            DataBaseHelper.writeStudentToFile(matchingStudent);
-//        }
+        matchingStudent.setApplication(application);
+        DataBaseHelper.writeStudentToFile(matchingStudent);
+    }
+
+    public static void rewriteFile(ArrayList<Student> students){
+        Student[] studentList = {};
+        try (FileOutputStream fs = new FileOutputStream("studentDB.ser")){
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            os.writeObject(studentList);
+            os.writeObject(students);
+            os.close();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
