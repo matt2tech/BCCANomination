@@ -7,7 +7,7 @@ public class Application implements Serializable {
     String name;
     String email;
     String school;
-    String age;
+    Integer age;
     String phoneNumber;
     String graduationDate;
     String plan;
@@ -34,7 +34,7 @@ public class Application implements Serializable {
 
     private Boolean eligibility(){
         while (true){
-            System.out.println("Do you meet the following requirements:\n*Graduating high school in 2019 \n*In driving distance of Water Valley\n[Y/N]");
+            System.out.println("(Question 1 of 11)\nDo you meet the following requirements:\n*Graduating high school in 2019 \n*In driving distance of Water Valley\n[Y/N]");
             String input = user.nextLine();
             if (input.equalsIgnoreCase("y")){
                 return true;
@@ -45,28 +45,27 @@ public class Application implements Serializable {
     }
 
     private void applicantInformation(){
-        System.out.println("Your Name: ");
+        System.out.println("Q2\nYour Name: ");
         name = user.nextLine();
-        System.out.println("Email Address: ");
+        System.out.println("Q3\nEmail Address: ");
         email = user.nextLine();
-        System.out.println("School District: ");
+        System.out.println("Q4\nSchool District: ");
         school = user.nextLine();
-        System.out.println("Age: ");
-        age = user.nextLine();
-        System.out.println("Phone Number: ");
+        age = ageInput();
+        System.out.println("Q6\nPhone Number: ");
         phoneNumber = user.nextLine();
-        System.out.println("Expected Graduation Date: ");
+        System.out.println("Q7\nExpected Graduation Date[mm/dd]: ");
         graduationDate = user.nextLine();
-        System.out.println("What is your plans for next year? (If you didn't get accepted into Base Camp)");
+        System.out.println("Q8\nWhat is your plans for next year? (If you didn't get accepted into Base Camp)");
         plan = user.nextLine();
     }
 
     private void qualityInfo() {
-        System.out.println("Aptitude: Please share a specific example of when you were strong problem solver.");
+        System.out.println("Q9\nAptitude: Please share a specific example of when you were strong problem solver.");
         aptitude = user.nextLine();
-        System.out.println("Dedication/Work Ethic/Heart: Please share a specific example of your dedication and work ethic.");
+        System.out.println("Q10\nDedication/Work Ethic/Heart: Please share a specific example of your dedication and work ethic.");
         dedicationWorkEthic = user.nextLine();
-        System.out.println("Passion/Persistence: Please tell us about something you are passionate about and have worked hard to achieve.");
+        System.out.println("Q11\nPassion/Persistence: Please tell us about something you are passionate about and have worked hard to achieve.");
         passion = user.nextLine();
     }
 
@@ -84,6 +83,22 @@ public class Application implements Serializable {
                 break;
             } else {
                 System.out.println("Invalid Input!");
+            }
+        }
+    }
+
+    private Integer ageInput(){
+        while (true) {
+            System.out.println("Q8\nAge:");
+            Scanner scan = new Scanner(System.in);
+            while (!scan.hasNextInt()) {
+                scan.next();
+            }
+            Integer input = scan.nextInt();
+            if (Integer.class.isInstance(input)) {
+                return input;
+            } else {
+                System.out.println("Please enter a valid number");
             }
         }
     }

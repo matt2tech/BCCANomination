@@ -49,7 +49,7 @@ public class Nomination implements Serializable {
 
     private boolean eligibility() {
         while (true) {
-            System.out.println("For a nominee to be eligible, nominee has to be\n*Within driving distance of Water Valley\n*Graduating high school in 2019\n[Y/N]");
+            System.out.println("(Question 1 of 14)\nFor a nominee to be eligible, nominee has to be\n*Within driving distance of Water Valley\n*Graduating high school in 2019\n[Y/N]");
             String bool = user.nextLine();
             if (bool.equalsIgnoreCase("y")) {
                 return true;
@@ -62,39 +62,54 @@ public class Nomination implements Serializable {
     }
 
     private void nominatorForm() {
-        System.out.println("Your Name: ");
+        System.out.println("Q2\nYour Name: ");
         nominator = user.nextLine();
-        System.out.println("Email Address: ");
+        System.out.println("Q3\nEmail Address: ");
         nominatorEmail = user.nextLine();
-        System.out.println("School District: ");
+        System.out.println("Q4\nSchool District: ");
         schoolDistrict = user.nextLine();
-        System.out.println("Position: ");
+        System.out.println("Q5\nPosition: ");
         position = user.nextLine();
-        System.out.println("Relationship to Nominee: ");
+        System.out.println("Q6\nRelationship to Nominee: ");
         relationship = user.nextLine();
     }
 
     private void nomineeInfo(){
         System.out.println("We will now ask you some question about the student you are nominating.");
-        System.out.println("Name:");
+        System.out.println("Q7\nName:");
         String name = user.nextLine();
-        System.out.println("Age:");
-        String age = user.nextLine();
-        System.out.println("Graduation Date [mm/dd]:");
+        Integer age = ageInput();
+        System.out.println("Q9\nGraduation Date [mm/dd]:");
         String date = user.nextLine();
         student = new Student(name, age, schoolDistrict, date);
     }
 
+    private Integer ageInput(){
+        while (true) {
+            System.out.println("Q8\nAge:");
+            Scanner scan = new Scanner(System.in);
+            while (!scan.hasNextInt()) {
+                scan.next();
+            }
+            Integer input = scan.nextInt();
+            if (Integer.class.isInstance(input)) {
+                return input;
+            } else {
+                System.out.println("Please enter a valid number");
+            }
+        }
+    }
+
     private void qualityInfo() {
-        System.out.println("Aptitude: Do you have any experiences when this student has demonstrated a strong ability to think logically and/or strategically?");
+        System.out.println("Q10\nAptitude: Do you have any experiences when this student has demonstrated a strong ability to think logically and/or strategically?");
         aptitude = user.nextLine();
-        System.out.println("Perseverance: Is there any evidence of the applicant being engaged in something they are passionate about?");
+        System.out.println("Q11\nPerseverance: Is there any evidence of the applicant being engaged in something they are passionate about?");
         perseverance = user.nextLine();
-        System.out.println("Dedication: Do you think the applicant would be able to reliably attend the program five days a week in Water Valley?");
+        System.out.println("Q12\nDedication: Do you think the applicant would be able to reliably attend the program five days a week in Water Valley?");
         dedication = user.nextLine();
-        System.out.println("Work Ethic/Heart: Why does this student deserve a position at Base Camp?");
+        System.out.println("Q13\nWork Ethic/Heart: Why does this student deserve a position at Base Camp?");
         workEthic = user.nextLine();
-        System.out.println("Anything else you'd like to share about this nominee?");
+        System.out.println("Q14\nAnything else you'd like to share about this nominee?");
         notes = user.nextLine();
     }
 
