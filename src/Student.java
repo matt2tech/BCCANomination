@@ -17,7 +17,7 @@ public class Student implements Serializable {
     }
 
     public String toString() {
-        return ("Name: " + this.name + "\n" + "Age: " + this.age + "\n" +  "School: " + school + " Graduation Date: " + this.graduationDate + "\nNomination: " + this.isNominationAvailable() + "\nApplication: " + this.isApplicationAvailable());
+        return (this.name + "\nAge: " + this.age  +  " School: " + school + " Graduation Date: " + this.graduationDate + "\nNomination: " + this.isNominationAvailable() + " Application: " + this.isApplicationAvailable());
     }
 
     public String getName() {
@@ -53,6 +53,26 @@ public class Student implements Serializable {
             return "Available";
         }else{
             return "Unavailable";
+        }
+    }
+
+    public void showNomination(){
+        if (isNominationAvailable() == "Available"){
+            System.out.println(this.nomination);
+        }else if(isNominationAvailable() == "Unavailable"){
+            System.out.println("Nomination not available at this time");
+        }else{
+            System.out.println("Error");
+        }
+    }
+
+    public void showApplication(){
+        if (isApplicationAvailable() == "Available"){
+            System.out.println(this.application);
+        }else if(isApplicationAvailable() == "Unavailable"){
+            System.out.println("Application not available at this time");
+        }else{
+            System.out.println("Error");
         }
     }
 }
