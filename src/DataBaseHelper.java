@@ -45,8 +45,7 @@ public class DataBaseHelper {
         ArrayList<Student> students = DataBaseHelper.readFromFile();
         Student matchingStudent =  student;
         for (Student s: DataBaseHelper.readFromFile()) {
-            System.out.println(s.name);
-            if (s.name.equalsIgnoreCase(student.name) && s.age.equalsIgnoreCase(student.age) && s.school.equalsIgnoreCase(student.school)) {
+            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)) {
                 System.out.println("Found Match");
                 matchingStudent = s;
                 students.remove(s);
@@ -61,7 +60,7 @@ public class DataBaseHelper {
         ArrayList<Student> students = DataBaseHelper.readFromFile();
         Student matchingStudent = student;
         for (Student s: students) {
-            if (s.name.equalsIgnoreCase(student.name) && s.age.equalsIgnoreCase(student.age) && s.school.equalsIgnoreCase(student.school)) {
+            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)) {
                 System.out.println("Found Match");
                 matchingStudent = s;
                 students.remove(s);
