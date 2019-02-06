@@ -1,15 +1,16 @@
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Student implements Serializable {
     String name;
 //    Change to Integer in later development
-    String age;
+    Integer age;
     String school;
     String graduationDate;
     Nomination nomination;
     Application application;
 
-    public Student(String name, String age, String school, String graduationDate){
+    public Student(String name, Integer age, String school, String graduationDate){
         this.name = name;
         this.age = age;
         this.school = school;
@@ -17,14 +18,14 @@ public class Student implements Serializable {
     }
 
     public String toString() {
-        return (this.name + "\nAge: " + this.age  +  " School: " + school + " Graduation Date: " + this.graduationDate + "\nNomination: " + this.isNominationAvailable() + " Application: " + this.isApplicationAvailable());
+        return (this.name + "\n\tAge: " + this.age  +  "\n\tSchool: " + school + "\n\tNomination: " + this.isNominationAvailable() + "\n\tApplication: " + this.isApplicationAvailable());
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
