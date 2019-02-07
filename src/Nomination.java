@@ -62,31 +62,31 @@ public class Nomination implements Serializable {
     }
 
     private void nominatorForm() {
-        System.out.println("Q2\nYour Name: ");
+        System.out.println("2/14\nYour Name: ");
         nominator = user.nextLine();
-        System.out.println("Q3\nEmail Address: ");
+        System.out.println("3/14\nEmail Address [example@email.com]: ");
         nominatorEmail = user.nextLine();
-        System.out.println("Q4\nSchool District: ");
+        System.out.println("4/14\nSchool District: ");
         schoolDistrict = user.nextLine();
-        System.out.println("Q5\nPosition: ");
+        System.out.println("5/14\nPosition: ");
         position = user.nextLine();
-        System.out.println("Q6\nRelationship to Nominee: ");
+        System.out.println("6/14\nRelationship to Nominee: ");
         relationship = user.nextLine();
     }
 
     private void nomineeInfo(){
         System.out.println("We will now ask you some question about the student you are nominating.");
-        System.out.println("Q7\nName:");
+        System.out.println("7/14\nName:");
         String name = user.nextLine();
         String age = ageInput();
-        System.out.println("Q9\nGraduation Date [mm/dd]:");
+        System.out.println("9/14\nGraduation Date [mm/dd]:");
         String date = user.nextLine();
         student = new Student(name, age, schoolDistrict, date);
     }
 
     private String ageInput(){
         while (true) {
-            System.out.println("Q8\nAge:");
+            System.out.println("8/14\nAge:");
             Scanner scan = new Scanner(System.in);
             String input = scan.nextLine();
             try {
@@ -103,15 +103,15 @@ public class Nomination implements Serializable {
     }
 
     private void qualityInfo() {
-        System.out.println("Q10\nAptitude: Do you have any experiences when this student has demonstrated a strong ability to think logically and/or strategically?");
+        System.out.println("10/14\nAptitude: Do you have any experiences when this student has demonstrated a strong ability to think logically and/or strategically?");
         aptitude = user.nextLine();
-        System.out.println("Q11\nPerseverance: Is there any evidence of the applicant being engaged in something they are passionate about?");
+        System.out.println("11/14\nPerseverance: Is there any evidence of the applicant being engaged in something they are passionate about?");
         perseverance = user.nextLine();
-        System.out.println("Q12\nDedication: Do you think the applicant would be able to reliably attend the program five days a week in Water Valley?");
+        System.out.println("12/14\nDedication: Do you think the applicant would be able to reliably attend the program five days a week in Water Valley?");
         dedication = user.nextLine();
-        System.out.println("Q13\nWork Ethic/Heart: Why does this student deserve a position at Base Camp?");
+        System.out.println("13/14\nWork Ethic/Heart: Why does this student deserve a position at Base Camp?");
         workEthic = user.nextLine();
-        System.out.println("Q14\nAnything else you'd like to share about this nominee?");
+        System.out.println("14/14\nAnything else you'd like to share about this nominee?");
         notes = user.nextLine();
     }
 
