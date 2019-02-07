@@ -19,15 +19,15 @@ public class Program {
             go();
         } else if (user.equals("3")) {
             System.out.println("Closing...");
-            System.out.close();
+            System.exit(0);
         } else {
-            System.out.println("Invalid Input!");
+            System.out.println("\nSystem Error\n");
         }
     }
 
     private String mainMenu() {
-        System.out.println("(1) Nominator\t(2) Applicant\t(3) Quit");
         while (true) {
+            System.out.println("(1) Nominator\t(2) Applicant\t(3) Quit");
             Scanner scan = new Scanner(System.in);
             String user = scan.nextLine();
             if (user.equals("1")) {
@@ -37,7 +37,7 @@ public class Program {
             } else if (user.equals("3")){
                 return user;
             } else {
-                System.out.println("Invalid!\n(1) Nominator\t(2) Applicant");
+                System.out.println("\nInvalid!\n");
             }
         }
     }

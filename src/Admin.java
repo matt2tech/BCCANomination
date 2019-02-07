@@ -16,16 +16,19 @@ public class Admin {
     }
 
     public void chooseFilter(){
-        while (true){
-            System.out.println("1)Show all applicants 2)Show ready applicants");
+        while (true) {
+            System.out.println("1)Show all applicants 2)Show ready applicants 3)Quit");
             String choice = user.nextLine();
-            if (choice.equals("1")){
+            if (choice.equals("1")) {
                 getStudents();
                 askForSelection();
-            }else if(choice.equals("2")){
+            } else if (choice.equals("2")) {
                 getReadyStudents();
                 askForSelection();
-            }else{
+            } else if (choice.equals("3")) {
+                System.out.println("Closing...");
+                System.exit(0);
+            } else {
                 System.out.println("Please enter a valid input");
             }
         }
