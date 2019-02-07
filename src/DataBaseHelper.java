@@ -80,4 +80,24 @@ public class DataBaseHelper {
             e.printStackTrace();
         }
     }
+
+    public static ArrayList<Student> searchStudentsByName(String searchInput){
+        ArrayList<Student> matchingStudents = new ArrayList<Student>();
+        for(Student s: DataBaseHelper.readFromFile()){
+            if (s.name.contains(searchInput)){
+                matchingStudents.add(s);
+            }
+        }
+        return matchingStudents;
+    }
+
+    public static ArrayList<Student> searchStudentsBySchool(String searchInput){
+        ArrayList<Student> matchingStudents = new ArrayList<Student>();
+        for(Student s: DataBaseHelper.readFromFile()){
+            if (s.school.contains(searchInput)){
+                matchingStudents.add(s);
+            }
+        }
+        return matchingStudents;
+    }
 }
