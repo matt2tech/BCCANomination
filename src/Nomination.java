@@ -28,7 +28,7 @@ public class Nomination implements Serializable {
     }
 
     public String toString() {
-        return ("Nominator: " + nominator + " Email: " +nominatorEmail+ " School: " +schoolDistrict+ " Position: " +position+ " Relationship: " +relationship+ "\nAptitude: " +aptitude + "\nPerseverance: "+perseverance + "\nDedication: " + dedication + "\nWork Ethic: " + workEthic + "\nNotes: " + notes);
+        return ("Nominator: " + nominator + " | Email: " +nominatorEmail+ " | School: " +schoolDistrict+ " | Position: " +position+ " | Relationship: " +relationship+ "\nAptitude: " +aptitude + "\nPerseverance: "+perseverance + "\nDedication: " + dedication + "\nWork Ethic: " + workEthic + "\nNotes: " + notes);
     }
 
     private boolean eligibility() {
