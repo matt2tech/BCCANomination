@@ -23,7 +23,7 @@ public class Nomination implements Serializable {
             qualityInfo();
             submission();
         } else if (!eligible) {
-            System.out.println("Apologies. This nominee is not eligible");
+            System.out.println("Apologies. This nominee is not eligible\n");
         } else {
             System.out.println("System Error!");
         }
@@ -121,10 +121,10 @@ public class Nomination implements Serializable {
             String bool = user.nextLine();
             if (bool.equalsIgnoreCase("y")) {
                 DataBaseHelper.checkForStudentNominee(student, this);
-                System.out.println("Submitted");
+                System.out.println("Submitted\n");
                 break;
             } else if (bool.equalsIgnoreCase("n")) {
-                System.out.println("Well thank you anyway for your time.");
+                System.out.println("Well thank you anyway for your time.\n");
                 break;
             } else {
                 System.out.println("Invalid Input!");

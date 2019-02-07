@@ -22,7 +22,7 @@ public class Application implements Serializable {
             qualityInfo();
             submission();
         }else if(!bool){
-            System.out.println("Sorry, you can not apply. You don not meet our criteria.");
+            System.out.println("Sorry, you can not apply. You don not meet our criteria.\n");
         }else{
             System.out.println("System Error");
         }
@@ -76,10 +76,10 @@ public class Application implements Serializable {
             if (bool.equalsIgnoreCase("y")) {
                 student = new Student(name, age, school, graduationDate);
                 DataBaseHelper.checkForStudentApplicant(student, this);
-                System.out.println("Submitted");
+                System.out.println("Submitted\n");
                 break;
             } else if (bool.equalsIgnoreCase("n")) {
-                System.out.println("Well thank you anyways for your time.");
+                System.out.println("Well thank you anyways for your time.\n");
                 break;
             } else {
                 System.out.println("Invalid Input!");
