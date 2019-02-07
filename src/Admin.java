@@ -59,17 +59,19 @@ public class Admin {
         while (true){
             System.out.println("\nPlease select a number that corresponds to a student(or enter 0 to go back to the main menu):");
             Scanner scan = new Scanner(System.in);
-            while(!scan.hasNextInt()) {
-                scan.next();
-            }
-            Integer selection = scan.nextInt();
-            if (selection - 1 >= 0 && selection <= students.size()){
-                showStudentDetails(students.get(selection - 1));
-                break;
-            }else if(selection == 0){
-                chooseFilter();
-            }
-            else {
+            String selection = scan.nextLine();
+            try {
+                Integer num = Integer.parseInt(selection);
+                if (num - 1 >= 0 && num <= students.size()){
+                    showStudentDetails(students.get(num - 1));
+                    break;
+                }else if(num == 0){
+                    chooseFilter();
+                }
+                else {
+                    System.out.println("Please enter a valid input");
+                }
+            } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid input");
             }
         }
