@@ -24,7 +24,6 @@ public class Admin {
                 askForSelection();
             }else if(choice.equals("2")){
                 getReadyStudents();
-                showStudents();
                 askForSelection();
             }else{
                 System.out.println("Please enter a valid input");
