@@ -17,7 +17,8 @@ public class Admin {
 
     private void chooseFilter(){
         while (true) {
-            System.out.println("1)Show all applicants 2)Show ready applicants 3)Quit");
+            System.out.println("1)Show all applicants\n2)Show ready applicants\n3)Search through applicants\n4)Quit");
+            System.out.println("Please select an option:");
             String choice = user.nextLine();
             switch (choice) {
                 case "1":
@@ -29,6 +30,9 @@ public class Admin {
                     askForSelection();
                     break;
                 case "3":
+                    searchByOption();
+                    break;
+                case "4":
                     System.out.println("Closing...");
                     System.exit(0);
                 default:
@@ -36,6 +40,40 @@ public class Admin {
                     break;
             }
         }
+    }
+    private void searchByOption(){
+        label:
+        while (true) {
+            System.out.println("1) Search by name\n2) Search by school district\n3)Back\nPlease select a search option:");
+            String choice = user.nextLine();
+            switch (choice) {
+                case "1":
+                    searchByName();
+                    askForSelection();
+                    break;
+                case "2":
+                    searchByDistrict();
+                    askForSelection();
+                    break;
+                case "3":
+                    break label;
+                default:
+                    System.out.println("Please enter a valid input");
+                    break;
+            }
+        }
+    }
+
+    private void searchByName(){
+        System.out.println("Please enter a name, or characters to search for:");
+        students.clear();
+        students.addAll(DataBaseHelper.searchStudentsByName(user.nextLine()));
+    }
+
+    private void searchByDistrict(){
+        System.out.println("Please enter a name, or characters to search for:");
+        students.clear();
+        students.addAll(DataBaseHelper.searchStudentsBySchool(user.nextLine()));
     }
 
     private void getStudents(){
@@ -54,9 +92,13 @@ public class Admin {
 
     private void showStudents(){
         int counter = 1;
-        for(Student s: students){
-            System.out.println(counter +") " + s);
-            counter ++;
+        if (students.size() > 0){
+            for(Student s: students){
+                System.out.println(counter +") " + s);
+                counter ++;
+            }
+        }else{
+            System.out.println("Sorry! No students found");
         }
     }
 
@@ -72,7 +114,7 @@ public class Admin {
                     showStudentDetails(students.get(num - 1));
                     break;
                 }else if(num == 0){
-                    chooseFilter();
+                    break;
                 }
                 else {
                     System.out.println("Please enter a valid input\n");
