@@ -1,7 +1,5 @@
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class DataBaseHelper {
@@ -55,14 +53,6 @@ public class DataBaseHelper {
                 DataBaseHelper.rewriteFile(students);
             }
         }
-//        for (Student s: DataBaseHelper.readFromFile()) {
-//            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)) {
-//                System.out.println("Found Match");
-//                matchingStudent = s;
-//                students.remove(s);
-//                DataBaseHelper.rewriteFile(students);
-//            }
-//        }
             matchingStudent.setNomination(nomination);
             DataBaseHelper.writeStudentToFile(matchingStudent);
     }
@@ -81,14 +71,6 @@ public class DataBaseHelper {
                 DataBaseHelper.rewriteFile(students);
             }
         }
-//        for (Student s: students) {
-//            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)) {
-//                System.out.println("Found Match");
-//                matchingStudent = s;
-//                students.remove(s);
-//                DataBaseHelper.rewriteFile(students);
-//            }
-//        }
         matchingStudent.setApplication(application);
         DataBaseHelper.writeStudentToFile(matchingStudent);
     }
