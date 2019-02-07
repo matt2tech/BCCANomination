@@ -45,15 +45,15 @@ public class Application implements Serializable {
     private void applicantInformation(){
         System.out.println("2/11\nYour Name: ");
         name = getNonEmptyAnswer();
-        System.out.println("3/11\nEmail Address [example@email.com: ");
-        email = getNonEmptyAnswer();
+        System.out.println("3/11\nEmail Address [example@email.com]: ");
+        email = getEmailInput();
         System.out.println("4/11\nSchool District: ");
         school = getNonEmptyAnswer();
         age = ageInput();
-        System.out.println("6/11\nPhone Number [1234567890]: ");
-        phoneNumber = getNonEmptyAnswer();
-        System.out.println("7/11\nExpected Graduation Date [mm/dd]: ");
-        graduationDate = getNonEmptyAnswer();
+        System.out.println("6/11\nPhone Number [123-456-7890]: ");
+        phoneNumber = getPhoneNumberInput();
+        System.out.println("7/11\nExpected Graduation Date [01/01/19]: ");
+        graduationDate = getDateInput();
         System.out.println("8/11\nWhat is your plans for next year? (If you didn't get accepted into Base Camp)");
         plan = getNonEmptyAnswer();
     }
@@ -106,6 +106,39 @@ public class Application implements Serializable {
                 return input;
             }else{
                 System.out.println("Please enter an answer");
+            }
+        }
+    }
+
+    private String getPhoneNumberInput() {
+        while (true) {
+            String input = user.nextLine();
+            if (input.matches("[0-9]{3}-[0-9]{3}-[0-9]{4}")) {
+                return input;
+            } else {
+                System.out.println("Please enter a valid input\n");
+            }
+        }
+    }
+
+    private String getDateInput() {
+        while (true) {
+            String input = user.nextLine();
+            if (input.matches("[0-9]{2}/[0-9]{2}/[0-9]{2}")) {
+                return input;
+            } else {
+                System.out.println("Please enter a valid input\n");
+            }
+        }
+    }
+
+    private String getEmailInput() {
+        while (true) {
+            String input = user.nextLine();
+            if (input.matches("[a-zA-Z0-9$&+,:;=?@#|'<>.-^*()%!]+@[a-z]+.[a-z]{2,3}")) {
+                return input;
+            } else {
+                System.out.println("Please enter a valid input\n");
             }
         }
     }

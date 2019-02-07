@@ -49,7 +49,7 @@ public class Nomination implements Serializable {
         System.out.println("2/14\nYour Name: ");
         nominator = getNonEmptyAnswer();
         System.out.println("3/14\nEmail Address [example@email.com]: ");
-        nominatorEmail = getNonEmptyAnswer();
+        nominatorEmail = getEmailInput();
         System.out.println("4/14\nSchool District: ");
         schoolDistrict = getNonEmptyAnswer();
         System.out.println("5/14\nPosition: ");
@@ -63,8 +63,8 @@ public class Nomination implements Serializable {
         System.out.println("7/14\nName:");
         String name = getNonEmptyAnswer();
         String age = ageInput();
-        System.out.println("9/14\nGraduation Date [mm/dd]:");
-        String date = getNonEmptyAnswer();
+        System.out.println("9/14\nGraduation Date [01/01/19]:");
+        String date = getDateInput();
         student = new Student(name, age, schoolDistrict, date);
     }
 
@@ -122,4 +122,28 @@ public class Nomination implements Serializable {
             }
         }
     }
+
+    private String getDateInput() {
+        while (true) {
+            String input = user.nextLine();
+            if (input.matches("[0-9]{2}/[0-9]{2}/[0-9]{2}")) {
+                return input;
+            } else {
+                System.out.println("Please enter a valid input\n");
+            }
+        }
+    }
+
+    private String getEmailInput() {
+        while (true) {
+            String input = user.nextLine();
+            if (input.matches("[a-zA-Z0-9$&+,:;=?@#|'<>.-^*()%!]+@[a-z]+.[a-z]{2,3}")) {
+                return input;
+            } else {
+                System.out.println("Please enter a valid input\n");
+            }
+        }
+    }
+
+
 }
