@@ -47,24 +47,24 @@ public class Nomination implements Serializable {
 
     private void nominatorForm() {
         System.out.println("2/14\nYour Name: ");
-        nominator = user.nextLine();
+        nominator = getNonEmptyAnswer();
         System.out.println("3/14\nEmail Address [example@email.com]: ");
-        nominatorEmail = user.nextLine();
+        nominatorEmail = getNonEmptyAnswer();
         System.out.println("4/14\nSchool District: ");
-        schoolDistrict = user.nextLine();
+        schoolDistrict = getNonEmptyAnswer();
         System.out.println("5/14\nPosition: ");
-        position = user.nextLine();
+        position = getNonEmptyAnswer();
         System.out.println("6/14\nRelationship to Nominee: ");
-        relationship = user.nextLine();
+        relationship = getNonEmptyAnswer();
     }
 
     private void nomineeInfo(){
         System.out.println("We will now ask you some question about the student you are nominating.");
         System.out.println("7/14\nName:");
-        String name = user.nextLine();
+        String name = getNonEmptyAnswer();
         String age = ageInput();
         System.out.println("9/14\nGraduation Date [mm/dd]:");
-        String date = user.nextLine();
+        String date = getNonEmptyAnswer();
         student = new Student(name, age, schoolDistrict, date);
     }
 
@@ -84,13 +84,13 @@ public class Nomination implements Serializable {
 
     private void qualityInfo() {
         System.out.println("10/14\nAptitude: Do you have any experiences when this student has demonstrated a strong ability to think logically and/or strategically?");
-        aptitude = user.nextLine();
+        aptitude = getNonEmptyAnswer();
         System.out.println("11/14\nPerseverance: Is there any evidence of the applicant being engaged in something they are passionate about?");
-        perseverance = user.nextLine();
+        perseverance = getNonEmptyAnswer();
         System.out.println("12/14\nDedication: Do you think the applicant would be able to reliably attend the program five days a week in Water Valley?");
-        dedication = user.nextLine();
+        dedication = getNonEmptyAnswer();
         System.out.println("13/14\nWork Ethic/Heart: Why does this student deserve a position at Base Camp?");
-        workEthic = user.nextLine();
+        workEthic = getNonEmptyAnswer();
         System.out.println("14/14\nAnything else you'd like to share about this nominee?");
         notes = user.nextLine();
     }
@@ -108,6 +108,17 @@ public class Nomination implements Serializable {
                 break;
             } else {
                 System.out.println("Invalid Input!");
+            }
+        }
+    }
+
+    private String getNonEmptyAnswer(){
+        while (true){
+            String input = user.nextLine();
+            if (!input.equals("")){
+                return input;
+            }else{
+                System.out.println("Please enter an answer");
             }
         }
     }

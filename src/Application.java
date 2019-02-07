@@ -44,27 +44,27 @@ public class Application implements Serializable {
 
     private void applicantInformation(){
         System.out.println("2/11\nYour Name: ");
-        name = user.nextLine();
+        name = getNonEmptyAnswer();
         System.out.println("3/11\nEmail Address [example@email.com: ");
-        email = user.nextLine();
+        email = getNonEmptyAnswer();
         System.out.println("4/11\nSchool District: ");
-        school = user.nextLine();
+        school = getNonEmptyAnswer();
         age = ageInput();
         System.out.println("6/11\nPhone Number [1234567890]: ");
-        phoneNumber = user.nextLine();
+        phoneNumber = getNonEmptyAnswer();
         System.out.println("7/11\nExpected Graduation Date [mm/dd]: ");
-        graduationDate = user.nextLine();
+        graduationDate = getNonEmptyAnswer();
         System.out.println("8/11\nWhat is your plans for next year? (If you didn't get accepted into Base Camp)");
-        plan = user.nextLine();
+        plan = getNonEmptyAnswer();
     }
 
     private void qualityInfo() {
         System.out.println("9/11\nAptitude: Please share a specific example of when you were strong problem solver.");
-        aptitude = user.nextLine();
+        aptitude = getNonEmptyAnswer();
         System.out.println("10/11\nDedication/Work Ethic/Heart: Please share a specific example of your dedication and work ethic.");
-        dedicationWorkEthic = user.nextLine();
+        dedicationWorkEthic = getNonEmptyAnswer();
         System.out.println("11/11\nPassion/Persistence: Please tell us about something you are passionate about and have worked hard to achieve.");
-        passion = user.nextLine();
+        passion = getNonEmptyAnswer();
     }
 
     private void submission() {
@@ -95,6 +95,17 @@ public class Application implements Serializable {
                 return input;
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid input\n");
+            }
+        }
+    }
+
+    private String getNonEmptyAnswer(){
+        while (true){
+            String input = user.nextLine();
+            if (!input.equals("")){
+                return input;
+            }else{
+                System.out.println("Please enter an answer");
             }
         }
     }
