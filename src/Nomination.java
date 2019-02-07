@@ -13,7 +13,7 @@ public class Nomination implements Serializable {
     String dedication;
     String workEthic;
     String notes;
-    static Scanner user = new Scanner(System.in);
+    static final Scanner user = new Scanner(System.in);
 
     public void go() {
         boolean eligible = eligibility();
@@ -22,29 +22,13 @@ public class Nomination implements Serializable {
             nomineeInfo();
             qualityInfo();
             submission();
-        } else if (!eligible) {
-            System.out.println("Apologies. This nominee is not eligible\n");
         } else {
-            System.out.println("System Error!");
+            System.out.println("Apologies. This nominee is not eligible\n");
         }
     }
 
     public String toString() {
         return ("Nominator: " + nominator + " Email: " +nominatorEmail+ " School: " +schoolDistrict+ " Position: " +position+ " Relationship: " +relationship+ "\nAptitude: " +aptitude + "\nPerseverance: "+perseverance + "\nDedication: " + dedication + "\nWork Ethic: " + workEthic + "\nNotes: " + notes);
-    }
-
-    public void getNominatorInfo() {
-        System.out.printf("Email Address: %s\nName: %s\nSchool District: %s\nPosition: %s\nRelationship to Nominee: %s\n"
-                , nominatorEmail, nominator, schoolDistrict, position, relationship);
-    }
-
-    public void getNomineeInfo() {
-        System.out.println(student);
-    }
-
-    public void getNomineeQuality() {
-        System.out.printf("Aptitude: %s\nPerseverance: %s\nDedication: %s\nWork Ethic/Heart: %s\nNotes: %s\n"
-                , aptitude, perseverance, dedication, workEthic, notes);
     }
 
     private boolean eligibility() {
@@ -90,12 +74,8 @@ public class Nomination implements Serializable {
             Scanner scan = new Scanner(System.in);
             String input = scan.nextLine();
             try {
-                Integer num = Integer.parseInt(input);
-                if (Integer.class.isInstance(num)) {
-                    return input;
-                } else {
-                    System.out.println("Please enter a valid input\n");
-                }
+                Integer.parseInt(input);
+                return input;
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid input\n");
             }

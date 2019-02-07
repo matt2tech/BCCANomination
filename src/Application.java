@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class Application implements Serializable {
-    static Scanner user = new Scanner(System.in);
+    static final Scanner user = new Scanner(System.in);
     Student student;
     String name;
     String email;
@@ -21,10 +21,8 @@ public class Application implements Serializable {
             applicantInformation();
             qualityInfo();
             submission();
-        }else if(!bool){
+        }else {
             System.out.println("Sorry, you can not apply. You don not meet our criteria.\n");
-        }else{
-            System.out.println("System Error");
         }
     }
 
@@ -93,12 +91,8 @@ public class Application implements Serializable {
             Scanner scan = new Scanner(System.in);
             String input = scan.nextLine();
             try {
-                Integer num = Integer.parseInt(input);
-                if (Integer.class.isInstance(num)) {
-                    return input;
-                } else {
-                    System.out.println("Please enter a valid input\n");
-                }
+                Integer.parseInt(input);
+                return input;
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid input\n");
             }

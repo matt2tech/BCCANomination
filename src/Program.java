@@ -7,21 +7,25 @@ public class Program {
         app.go();
     }
 
-    public void go() {
+    private void go() {
         String user = mainMenu();
-        if (user.equals("1")) {
-            Nomination nom = new Nomination();
-            nom.go();
-            go();
-        } else if (user.equals("2")) {
-            Application app = new Application();
-            app.go();
-            go();
-        } else if (user.equals("3")) {
-            System.out.println("Closing...");
-            System.exit(0);
-        } else {
-            System.out.println("\nSystem Error\n");
+        switch (user) {
+            case "1":
+                Nomination nom = new Nomination();
+                nom.go();
+                go();
+                break;
+            case "2":
+                Application app = new Application();
+                app.go();
+                go();
+                break;
+            case "3":
+                System.out.println("Closing...");
+                System.exit(0);
+            default:
+                System.out.println("\nSystem Error\n");
+                break;
         }
     }
 
@@ -30,14 +34,16 @@ public class Program {
             System.out.println("(1) Nominator\t(2) Applicant\t(3) Quit");
             Scanner scan = new Scanner(System.in);
             String user = scan.nextLine();
-            if (user.equals("1")) {
-                return user;
-            } else if (user.equals("2")) {
-                return user;
-            } else if (user.equals("3")){
-                return user;
-            } else {
-                System.out.println("\nInvalid!\n");
+            switch (user) {
+                case "1":
+                    return user;
+                case "2":
+                    return user;
+                case "3":
+                    return user;
+                default:
+                    System.out.println("\nInvalid!\n");
+                    break;
             }
         }
     }

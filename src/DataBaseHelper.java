@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class DataBaseHelper {
 
-    public static void writeStudentToFile(Student student){
+    private static void writeStudentToFile(Student student){
         Student[] studentList = {};
         ArrayList<Student> students = DataBaseHelper.readFromFile();
         students.add(student);
@@ -13,9 +13,7 @@ public class DataBaseHelper {
             os.writeObject(studentList);
             os.writeObject(students);
             os.close();
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
@@ -24,17 +22,13 @@ public class DataBaseHelper {
         ArrayList<Student> students = new ArrayList<Student>();
         try(FileInputStream fi = new FileInputStream("studentDB.ser")){
             ObjectInputStream os = new ObjectInputStream(fi);
-            Student[] studentList = (Student[]) os.readObject();
-            ArrayList<Student> studentArray = (ArrayList<Student>)os.readObject();
-            for(Student s: studentArray){
-                students.add(s);
-            }
+            @SuppressWarnings("unused") Student[] studentList = (Student[]) os.readObject();
+            @SuppressWarnings("unchecked") ArrayList<Student> studentArray = (ArrayList<Student>)os.readObject();
+            students.addAll(studentArray);
             os.close();
-        }catch (FileNotFoundException e){
+        }catch (FileNotFoundException | ClassNotFoundException e){
             e.printStackTrace();
-        }catch (IOException e){
-        }catch (ClassNotFoundException e){
-            e.printStackTrace();
+        }catch (IOException ignored){
         }
         return students;
     }
@@ -75,16 +69,14 @@ public class DataBaseHelper {
         DataBaseHelper.writeStudentToFile(matchingStudent);
     }
 
-    public static void rewriteFile(ArrayList<Student> students){
+    private static void rewriteFile(ArrayList<Student> students){
         Student[] studentList = {};
         try (FileOutputStream fs = new FileOutputStream("studentDB.ser")){
             ObjectOutputStream os = new ObjectOutputStream(fs);
             os.writeObject(studentList);
             os.writeObject(students);
             os.close();
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
     }

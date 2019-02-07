@@ -1,5 +1,4 @@
 import java.io.Serializable;
-import java.util.Scanner;
 
 public class Student implements Serializable {
     String name;
@@ -19,18 +18,6 @@ public class Student implements Serializable {
 
     public String toString() {
         return (this.name + "\n\tAge: " + this.age  +  "\n\tSchool: " + school + "\n\tNomination: " + this.isNominationAvailable() + "\n\tApplication: " + this.isApplicationAvailable());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public String getGraduationDate() {
-        return graduationDate;
     }
 
     public void setNomination(Nomination nomination) {
@@ -58,9 +45,9 @@ public class Student implements Serializable {
     }
 
     public void showNomination(){
-        if (isNominationAvailable() == "Available"){
+        if (isNominationAvailable().equals("Available")){
             System.out.println(this.nomination);
-        }else if(isNominationAvailable() == "Unavailable"){
+        }else if(isNominationAvailable().equals("Unavailable")){
             System.out.println("Nomination not available at this time");
         }else{
             System.out.println("Error");
@@ -68,9 +55,9 @@ public class Student implements Serializable {
     }
 
     public void showApplication(){
-        if (isApplicationAvailable() == "Available"){
+        if (isApplicationAvailable().equals("Available")){
             System.out.println(this.application);
-        }else if(isApplicationAvailable() == "Unavailable"){
+        }else if(isApplicationAvailable().equals("Unavailable")){
             System.out.println("Application not available at this time");
         }else{
             System.out.println("Error");

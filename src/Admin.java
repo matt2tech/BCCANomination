@@ -2,44 +2,48 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Admin {
-    private Scanner user = new Scanner(System.in);
-    private ArrayList<Student> students = new ArrayList<Student>();
+    final Scanner user = new Scanner(System.in);
+    ArrayList<Student> students = new ArrayList<Student>();
 
     public static void main(String[] args) {
         Admin admin = new Admin();
         admin.go();
     }
 
-    public void go() {
+    private void go() {
         System.out.println("Welcome Sean Anthony");
         chooseFilter();
     }
 
-    public void chooseFilter(){
+    private void chooseFilter(){
         while (true) {
             System.out.println("1)Show all applicants 2)Show ready applicants 3)Quit");
             String choice = user.nextLine();
-            if (choice.equals("1")) {
-                getStudents();
-                askForSelection();
-            } else if (choice.equals("2")) {
-                getReadyStudents();
-                askForSelection();
-            } else if (choice.equals("3")) {
-                System.out.println("Closing...");
-                System.exit(0);
-            } else {
-                System.out.println("Please enter a valid input");
+            switch (choice) {
+                case "1":
+                    getStudents();
+                    askForSelection();
+                    break;
+                case "2":
+                    getReadyStudents();
+                    askForSelection();
+                    break;
+                case "3":
+                    System.out.println("Closing...");
+                    System.exit(0);
+                default:
+                    System.out.println("Please enter a valid input");
+                    break;
             }
         }
     }
 
-    public void getStudents(){
+    private void getStudents(){
         students.clear();
         students.addAll(DataBaseHelper.readFromFile());
     }
 
-    public void getReadyStudents(){
+    private void getReadyStudents(){
         students.clear();
         for (Student s: DataBaseHelper.readFromFile()){
             if (s.isApplicationAvailable().equals("Available") && s.isNominationAvailable().equals("Available")){
@@ -48,7 +52,7 @@ public class Admin {
         }
     }
 
-    public void showStudents(){
+    private void showStudents(){
         int counter = 1;
         for(Student s: students){
             System.out.println(counter +") " + s);
@@ -56,7 +60,7 @@ public class Admin {
         }
     }
 
-    public void askForSelection(){
+    private void askForSelection(){
         while (true){
             showStudents();
             System.out.println("\nPlease select a number that corresponds to a student(or enter 0 to go back to the main menu):");
@@ -79,20 +83,25 @@ public class Admin {
         }
     }
 
-    public void showStudentDetails(Student student){
+    private void showStudentDetails(Student student){
         System.out.println("\n" + student);
-        while (true){
+        label:
+        while (true) {
             System.out.println("\n---Please select a choice---\n1)Nomination 2)Application 3)Back");
             String choice = user.nextLine();
-            if (choice.equals("1")){
-                student.showNomination();
-            }else if (choice.equals("2")){
-                student.showApplication();
-            }else if(choice.equals("3")){
-                showStudents();
-                askForSelection();
-            }else {
-                System.out.println("Please enter a valid input");
+            switch (choice) {
+                case "1":
+                    student.showNomination();
+                    break;
+                case "2":
+                    student.showApplication();
+                    break;
+                case "3":
+                    askForSelection();
+                    break label;
+                default:
+                    System.out.println("Please enter a valid input");
+                    break;
             }
         }
     }
