@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class Student implements Serializable {
     String name;
 //    Change to Integer in later development
-    Integer age;
+    String age;
     String school;
     String graduationDate;
     Nomination nomination;
     Application application;
 
-    public Student(String name, Integer age, String school, String graduationDate){
+    public Student(String name, String age, String school, String graduationDate){
         this.name = name;
         this.age = age;
         this.school = school;
@@ -25,7 +25,7 @@ public class Student implements Serializable {
         return name;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
