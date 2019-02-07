@@ -27,7 +27,7 @@ public class Application implements Serializable {
     }
 
     public String toString() {
-        return ("Email: " +email+ " School: " +school+ "Phone Number: " +phoneNumber+  "Plan: " +plan+ "\nAptitude: " +aptitude + "\nDedication / Work Ethic: " + dedicationWorkEthic + "\nPassion: " + passion);
+        return ("Email: " +email+ " | School: " +school+ " | Phone Number: " + phoneNumber+  "\nPlan: " +plan+ "\nAptitude: " +aptitude + "\nDedication/Work Ethic: " + dedicationWorkEthic + "\nPassion: " + passion);
     }
 
     private Boolean eligibility(){
