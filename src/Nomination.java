@@ -78,24 +78,26 @@ public class Nomination implements Serializable {
         System.out.println("We will now ask you some question about the student you are nominating.");
         System.out.println("Q7\nName:");
         String name = user.nextLine();
-        Integer age = ageInput();
+        String age = ageInput();
         System.out.println("Q9\nGraduation Date [mm/dd]:");
         String date = user.nextLine();
         student = new Student(name, age, schoolDistrict, date);
     }
 
-    private Integer ageInput(){
+    private String ageInput(){
         while (true) {
             System.out.println("Q8\nAge:");
             Scanner scan = new Scanner(System.in);
-            while (!scan.hasNextInt()) {
-                scan.next();
-            }
-            Integer input = scan.nextInt();
-            if (Integer.class.isInstance(input)) {
-                return input;
-            } else {
-                System.out.println("Please enter a valid number");
+            String input = scan.nextLine();
+            try {
+                Integer num = Integer.parseInt(input);
+                if (Integer.class.isInstance(num)) {
+                    return input;
+                } else {
+                    System.out.println("Please enter a valid input\n");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid input\n");
             }
         }
     }

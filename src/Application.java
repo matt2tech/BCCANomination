@@ -7,7 +7,7 @@ public class Application implements Serializable {
     String name;
     String email;
     String school;
-    Integer age;
+    String age;
     String phoneNumber;
     String graduationDate;
     String plan;
@@ -87,18 +87,20 @@ public class Application implements Serializable {
         }
     }
 
-    private Integer ageInput(){
+    private String ageInput(){
         while (true) {
             System.out.println("Q8\nAge:");
             Scanner scan = new Scanner(System.in);
-            while (!scan.hasNextInt()) {
-                scan.next();
-            }
-            Integer input = scan.nextInt();
-            if (Integer.class.isInstance(input)) {
-                return input;
-            } else {
-                System.out.println("Please enter a valid number");
+            String input = scan.nextLine();
+            try {
+                Integer num = Integer.parseInt(input);
+                if (Integer.class.isInstance(num)) {
+                    return input;
+                } else {
+                    System.out.println("Please enter a valid input\n");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid input\n");
             }
         }
     }
