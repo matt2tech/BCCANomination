@@ -2,6 +2,7 @@ import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class DataBaseHelper {
 
@@ -34,7 +35,6 @@ public class DataBaseHelper {
         }catch (FileNotFoundException e){
             e.printStackTrace();
         }catch (IOException e){
-            e.printStackTrace();
         }catch (ClassNotFoundException e){
             e.printStackTrace();
         }
@@ -44,14 +44,25 @@ public class DataBaseHelper {
     public static void checkForStudentNominee(Student student, Nomination nomination){
         ArrayList<Student> students = DataBaseHelper.readFromFile();
         Student matchingStudent =  student;
-        for (Student s: DataBaseHelper.readFromFile()) {
-            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)) {
+        Iterator<Student> iter = students.iterator();
+        while (iter.hasNext()){
+            Student s = iter.next();
+
+            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)){
                 System.out.println("Found Match");
                 matchingStudent = s;
-                students.remove(s);
+                iter.remove();
                 DataBaseHelper.rewriteFile(students);
             }
         }
+//        for (Student s: DataBaseHelper.readFromFile()) {
+//            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)) {
+//                System.out.println("Found Match");
+//                matchingStudent = s;
+//                students.remove(s);
+//                DataBaseHelper.rewriteFile(students);
+//            }
+//        }
             matchingStudent.setNomination(nomination);
             DataBaseHelper.writeStudentToFile(matchingStudent);
     }
@@ -59,14 +70,25 @@ public class DataBaseHelper {
     public static void checkForStudentApplicant(Student student, Application application){
         ArrayList<Student> students = DataBaseHelper.readFromFile();
         Student matchingStudent = student;
-        for (Student s: students) {
-            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)) {
+        Iterator<Student> iter = students.iterator();
+        while (iter.hasNext()){
+            Student s = iter.next();
+
+            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)){
                 System.out.println("Found Match");
                 matchingStudent = s;
-                students.remove(s);
+                iter.remove();
                 DataBaseHelper.rewriteFile(students);
             }
         }
+//        for (Student s: students) {
+//            if (s.name.equalsIgnoreCase(student.name) && s.school.equalsIgnoreCase(student.school)) {
+//                System.out.println("Found Match");
+//                matchingStudent = s;
+//                students.remove(s);
+//                DataBaseHelper.rewriteFile(students);
+//            }
+//        }
         matchingStudent.setApplication(application);
         DataBaseHelper.writeStudentToFile(matchingStudent);
     }
