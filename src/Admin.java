@@ -21,7 +21,6 @@ public class Admin {
             String choice = user.nextLine();
             if (choice.equals("1")){
                 getStudents();
-                showStudents();
                 askForSelection();
             }else if(choice.equals("2")){
                 getReadyStudents();
@@ -57,6 +56,7 @@ public class Admin {
 
     public void askForSelection(){
         while (true){
+            showStudents();
             System.out.println("\nPlease select a number that corresponds to a student(or enter 0 to go back to the main menu):");
             Scanner scan = new Scanner(System.in);
             String selection = scan.nextLine();
@@ -69,10 +69,10 @@ public class Admin {
                     chooseFilter();
                 }
                 else {
-                    System.out.println("Please enter a valid input");
+                    System.out.println("Please enter a valid input\n");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid input");
+                System.out.println("Please enter a valid input\n");
             }
         }
     }
