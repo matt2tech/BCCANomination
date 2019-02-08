@@ -1,4 +1,4 @@
-# BCCANomination
+# BCCA Nomination
 A software solution in Java to support the Base Camp Coding Academy admissions process.
 
 ## User Side
