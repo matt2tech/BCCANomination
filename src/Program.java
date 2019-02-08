@@ -8,6 +8,7 @@ public class Program {
     }
 
     private void go() {
+        System.out.println("Welcome to Base Camp Coding Academy's Nomination/Application app!");
         String user = mainMenu();
         switch (user) {
             case "1":
@@ -31,7 +32,7 @@ public class Program {
 
     private String mainMenu() {
         while (true) {
-            System.out.println("(1) Nominator\t(2) Applicant\t(3) Quit");
+            System.out.println("Are you nominating a student or applying to Base Camp Coding Academy?\n(1) Nominate\t(2) Apply\t(3) Quit");
             Scanner scan = new Scanner(System.in);
             String user = scan.nextLine();
             switch (user) {

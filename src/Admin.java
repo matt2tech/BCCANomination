@@ -17,8 +17,8 @@ public class Admin {
 
     private void chooseFilter(){
         while (true) {
-            System.out.println("1)Show all applicants\n2)Show ready applicants\n3)Search through applicants\n4)Quit");
             System.out.println("Please select an option:");
+            System.out.println("1)Show all applicants\n2)Show ready applicants\n3)Search through applicants\n4)Quit");
             String choice = user.nextLine();
             switch (choice) {
                 case "1":
@@ -94,11 +94,11 @@ public class Admin {
         int counter = 1;
         if (students.size() > 0){
             for(Student s: students){
-                System.out.println(counter +") " + s);
+                System.out.println("\n" + counter +") " + s);
                 counter ++;
             }
         }else{
-            System.out.println("Sorry! No students found");
+            System.out.println("\nSorry! No students found");
         }
     }
 
